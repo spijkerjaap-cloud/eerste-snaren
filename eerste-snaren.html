@@ -1,23 +1,42 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f1b447">
+  <title>Eerste Snaren</title>
+  <meta name="description" content="Een beeldende gitaar-leerapp voor Bo om rustig met de eerste snaren te beginnen.">
+</head>
+<body>
 <div id="eerste-snaren-app">
   <style>
+    body {
+      margin: 0;
+      background: #160f0d;
+    }
+
     #eerste-snaren-app {
-      --ink: #211915;
-      --muted: #70645d;
-      --paper: #fffaf3;
-      --panel: #ffffff;
-      --line: #e7d8c7;
-      --amber: #f1b447;
-      --rose: #e96974;
-      --teal: #32a89d;
-      --blue: #4e7fd8;
-      --green: #65a765;
-      --shadow: 0 18px 50px rgba(72, 47, 22, 0.16);
+      --ink: #211611;
+      --muted: #7a6b61;
+      --paper: #fff7eb;
+      --panel: rgba(255, 252, 245, 0.88);
+      --panel-strong: rgba(255, 255, 255, 0.94);
+      --line: rgba(151, 108, 68, 0.24);
+      --amber: #dca243;
+      --rose: #c85f66;
+      --teal: #238f87;
+      --blue: #456fb8;
+      --green: #5b9362;
+      --mahogany: #4d2419;
+      --cedar: #d9924c;
+      --gold: #e8c36a;
+      --shadow: 0 24px 70px rgba(52, 27, 13, 0.22);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 12% 8%, rgba(241, 180, 71, 0.22), transparent 30%),
-        radial-gradient(circle at 88% 16%, rgba(50, 168, 157, 0.18), transparent 28%),
-        linear-gradient(135deg, #fff9ef 0%, #f7efe5 45%, #eef7f4 100%);
+        radial-gradient(circle at 12% 6%, rgba(232, 195, 106, 0.38), transparent 27%),
+        radial-gradient(circle at 86% 14%, rgba(35, 143, 135, 0.18), transparent 30%),
+        linear-gradient(135deg, #fff7e8 0%, #f4e4cf 38%, #eaf4ef 100%);
       min-height: 100vh;
       box-sizing: border-box;
       padding: 18px;
@@ -39,10 +58,11 @@
     .practice-panel,
     .right-panel,
     .card {
-      background: rgba(255, 255, 255, 0.84);
-      border: 1px solid rgba(231, 216, 199, 0.9);
+      background: var(--panel);
+      border: 1px solid var(--line);
       box-shadow: var(--shadow);
       border-radius: 8px;
+      backdrop-filter: blur(18px);
     }
 
     .sidebar {
@@ -51,6 +71,9 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+      background:
+        linear-gradient(180deg, rgba(255, 252, 245, 0.92), rgba(255, 246, 232, 0.82)),
+        linear-gradient(135deg, rgba(232, 195, 106, 0.12), rgba(35, 143, 135, 0.08));
     }
 
     .brand {
@@ -63,12 +86,14 @@
       width: 44px;
       height: 44px;
       border-radius: 8px;
-      background: linear-gradient(145deg, var(--amber), #d9754c);
+      background:
+        radial-gradient(circle at 50% 42%, rgba(255,255,255,0.28), transparent 28%),
+        linear-gradient(145deg, var(--gold), #9d4c2d 72%);
       display: grid;
       place-items: center;
       color: #fff;
       font-weight: 800;
-      box-shadow: inset 0 -6px 0 rgba(0,0,0,0.09);
+      box-shadow: inset 0 -6px 0 rgba(0,0,0,0.12), 0 10px 22px rgba(124, 69, 28, 0.22);
     }
 
     .brand h1 {
@@ -110,6 +135,7 @@
       stroke: var(--teal);
       stroke-dasharray: 326;
       stroke-dashoffset: 326;
+      transition: stroke-dashoffset 0.25s ease;
     }
 
     .ring-text {
@@ -130,8 +156,8 @@
     }
 
     .nav-item {
-      border: 0;
-      background: transparent;
+      border: 1px solid transparent;
+      background: rgba(255, 255, 255, 0.34);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -143,8 +169,9 @@
     }
 
     .nav-item.active {
-      background: #211915;
+      background: linear-gradient(135deg, #25140f, #5b2b1d);
       color: #fff;
+      box-shadow: 0 12px 24px rgba(73, 36, 19, 0.2);
     }
 
     .nav-icon {
@@ -168,6 +195,17 @@
       overflow: hidden;
       position: relative;
       min-height: 315px;
+      background:
+        linear-gradient(135deg, rgba(255, 253, 247, 0.94), rgba(255, 244, 224, 0.78)),
+        radial-gradient(circle at 86% 20%, rgba(232, 195, 106, 0.2), transparent 34%);
+    }
+
+    .lesson::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 0 54%, rgba(35, 143, 135, 0.07) 54% 100%);
+      pointer-events: none;
     }
 
     .lesson-grid {
@@ -175,6 +213,8 @@
       grid-template-columns: minmax(0, 1fr) 340px;
       gap: 20px;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
 
     .eyebrow {
@@ -195,6 +235,7 @@
       line-height: 0.95;
       letter-spacing: 0;
       max-width: 680px;
+      color: #26140e;
     }
 
     .lesson p {
@@ -217,8 +258,8 @@
     }
 
     .btn {
-      border: 1px solid var(--line);
-      background: #fff;
+      border: 1px solid rgba(151, 108, 68, 0.28);
+      background: rgba(255, 255, 255, 0.76);
       color: var(--ink);
       border-radius: 8px;
       min-height: 42px;
@@ -228,12 +269,19 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      box-shadow: 0 8px 18px rgba(92, 50, 22, 0.08);
     }
 
     .btn.primary {
-      background: var(--ink);
+      background: linear-gradient(135deg, #211611, #65321f);
       color: #fff;
-      border-color: var(--ink);
+      border-color: #4d2419;
+      box-shadow: 0 12px 26px rgba(77, 36, 25, 0.28);
+    }
+
+    .btn:disabled {
+      opacity: 0.42;
+      cursor: not-allowed;
     }
 
     .btn.icon {
@@ -247,22 +295,48 @@
       position: relative;
       display: grid;
       place-items: center;
+      filter: drop-shadow(0 24px 34px rgba(80, 41, 18, 0.22));
     }
 
     .guitar-body {
-      width: 210px;
-      height: 210px;
-      border-radius: 48% 52% 48% 52%;
+      width: 238px;
+      height: 212px;
+      border-radius: 48% 52% 48% 52% / 57% 56% 44% 43%;
       background:
-        radial-gradient(circle at 48% 48%, #41271a 0 17%, transparent 18%),
-        radial-gradient(circle at 36% 50%, #d88746 0 36%, transparent 37%),
-        radial-gradient(circle at 68% 50%, #b96a36 0 39%, transparent 40%),
-        linear-gradient(135deg, #e9a35b, #8b4d2d);
-      box-shadow: inset -18px -20px 0 rgba(0,0,0,0.12), 0 22px 40px rgba(88,52,18,0.2);
+        radial-gradient(ellipse at 50% 50%, #2b1710 0 12%, transparent 13%),
+        radial-gradient(ellipse at 50% 50%, transparent 0 17%, rgba(232, 195, 106, 0.9) 18% 19%, transparent 20%),
+        radial-gradient(ellipse at 31% 50%, #e8a75d 0 34%, transparent 35%),
+        radial-gradient(ellipse at 70% 51%, #d18744 0 36%, transparent 37%),
+        linear-gradient(110deg, #f0b76c 0%, #c56f35 54%, #7e3c27 100%);
+      box-shadow:
+        inset -24px -24px 0 rgba(70, 28, 16, 0.18),
+        inset 18px 18px 0 rgba(255,255,255,0.08),
+        0 26px 48px rgba(88,52,18,0.24);
       position: absolute;
-      left: 50%;
-      top: 36px;
+      left: 47%;
+      top: 30px;
       transform: translateX(-52%) rotate(-9deg);
+    }
+
+    .guitar-body::before,
+    .guitar-body::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 58px;
+      height: 88px;
+      background: rgba(255, 247, 232, 0.92);
+      border-radius: 50%;
+      transform: translateY(-50%);
+      box-shadow: inset 0 0 18px rgba(126, 60, 39, 0.08);
+    }
+
+    .guitar-body::before {
+      left: -20px;
+    }
+
+    .guitar-body::after {
+      right: -18px;
     }
 
     .guitar-neck {
@@ -271,10 +345,12 @@
       top: 101px;
       width: 230px;
       height: 46px;
-      background: linear-gradient(90deg, #6d4228, #9d663d);
+      background:
+        repeating-linear-gradient(90deg, transparent 0 33px, rgba(232, 195, 106, 0.38) 33px 35px),
+        linear-gradient(90deg, #4d2419, #8a5330);
       border-radius: 6px;
       transform: rotate(-9deg);
-      box-shadow: inset 0 8px 0 rgba(255,255,255,0.12);
+      box-shadow: inset 0 8px 0 rgba(255,255,255,0.1), inset 0 -8px 0 rgba(0,0,0,0.12);
     }
 
     .guitar-neck::before {
@@ -284,8 +360,9 @@
       top: -10px;
       width: 58px;
       height: 66px;
-      background: #6d4228;
+      background: linear-gradient(135deg, #4d2419, #7c4528);
       border-radius: 12px 22px 22px 12px;
+      box-shadow: inset -8px 0 0 rgba(0,0,0,0.14);
     }
 
     .hero-string {
@@ -312,13 +389,13 @@
       place-items: center;
       color: #fff;
       font-weight: 800;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.14);
+      box-shadow: 0 10px 20px rgba(52, 27, 13, 0.2), inset 0 1px 0 rgba(255,255,255,0.22);
       animation: float 4.4s ease-in-out infinite;
     }
 
-    .note-chip:nth-of-type(1) { background: var(--rose); left: 22px; top: 42px; }
-    .note-chip:nth-of-type(2) { background: var(--teal); right: 42px; top: 28px; animation-delay: -1.4s; }
-    .note-chip:nth-of-type(3) { background: var(--blue); left: 64px; bottom: 24px; animation-delay: -2.2s; }
+    .note-chip:nth-of-type(1) { background: linear-gradient(135deg, var(--rose), #9f3844); left: 16px; top: 38px; }
+    .note-chip:nth-of-type(2) { background: linear-gradient(135deg, var(--teal), #176b67); right: 32px; top: 22px; animation-delay: -1.4s; }
+    .note-chip:nth-of-type(3) { background: linear-gradient(135deg, var(--blue), #294f95); left: 54px; bottom: 18px; animation-delay: -2.2s; }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
@@ -327,6 +404,7 @@
 
     .practice-panel {
       padding: 16px;
+      background: var(--panel-strong);
     }
 
     .section-title {
@@ -350,8 +428,9 @@
     }
 
     .chord-card {
-      border: 1px solid var(--line);
-      background: #fff;
+      border: 1px solid rgba(151, 108, 68, 0.22);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,248,238,0.88));
       border-radius: 8px;
       padding: 10px;
       min-height: 156px;
@@ -360,11 +439,13 @@
       justify-items: center;
       font: inherit;
       color: var(--ink);
+      box-shadow: 0 10px 22px rgba(78, 39, 19, 0.08);
     }
 
     .chord-card.active {
-      outline: 3px solid rgba(50, 168, 157, 0.28);
+      outline: 3px solid rgba(35, 143, 135, 0.2);
       border-color: var(--teal);
+      background: linear-gradient(180deg, #ffffff, #eef8f5);
     }
 
     .chord-name {
@@ -414,16 +495,40 @@
       gap: 14px;
       align-content: start;
       min-height: calc(100vh - 36px);
+      background: rgba(255, 249, 240, 0.84);
     }
 
     .card {
       box-shadow: none;
       padding: 14px;
+      background: rgba(255, 255, 255, 0.68);
     }
 
     .card h3 {
       margin: 0 0 10px;
       font-size: 17px;
+    }
+
+    .lesson-progress {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 6px;
+      margin-top: 16px;
+      max-width: 520px;
+    }
+
+    .lesson-dot {
+      height: 8px;
+      border-radius: 999px;
+      background: #eadccb;
+    }
+
+    .lesson-dot.done {
+      background: var(--teal);
+    }
+
+    .lesson-dot.current {
+      background: var(--ink);
     }
 
     .streak {
@@ -453,7 +558,13 @@
       gap: 8px;
     }
 
-    .mission {
+    .course-map {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mission,
+    .lesson-step {
       display: grid;
       grid-template-columns: 28px 1fr auto;
       gap: 8px;
@@ -464,8 +575,35 @@
       border: 1px solid #eadccb;
     }
 
-    .mission strong { font-size: 13px; }
-    .mission span { font-size: 12px; color: var(--muted); }
+    .lesson-step {
+      width: 100%;
+      text-align: left;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .lesson-step.active {
+      background: linear-gradient(135deg, #211611, #5d2d1d);
+      border-color: #4d2419;
+      color: #fff;
+    }
+
+    .lesson-step.active span,
+    .lesson-step.active small {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .lesson-step.done .check {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+
+    .mission strong,
+    .lesson-step strong { font-size: 13px; }
+    .mission span,
+    .lesson-step span,
+    .lesson-step small { font-size: 12px; color: var(--muted); }
 
     .check {
       width: 28px;
@@ -479,6 +617,30 @@
       color: var(--green);
     }
 
+    .feedback-card {
+      background: linear-gradient(135deg, #eef7f4, #fff8ea);
+      border-color: rgba(50, 168, 157, 0.28);
+    }
+
+    .feedback-state {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .feedback-light {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--amber);
+      box-shadow: 0 0 0 5px rgba(241, 180, 71, 0.18);
+      margin-top: 4px;
+      flex: 0 0 auto;
+    }
+
     .fretboard-card {
       display: grid;
       gap: 12px;
@@ -487,18 +649,20 @@
     .fretboard {
       position: relative;
       min-height: 202px;
-      background: linear-gradient(90deg, #5f3823, #805235);
+      background:
+        repeating-linear-gradient(90deg, transparent 0 18%, rgba(232, 195, 106, 0.22) 18% 18.7%),
+        linear-gradient(90deg, #4d2419, #805235);
       border-radius: 8px;
       overflow: hidden;
       padding: 18px 12px;
-      box-shadow: inset 0 10px 0 rgba(255,255,255,0.08), inset 0 -12px 0 rgba(0,0,0,0.08);
+      box-shadow: inset 0 10px 0 rgba(255,255,255,0.08), inset 0 -12px 0 rgba(0,0,0,0.12), 0 14px 28px rgba(73, 36, 19, 0.12);
     }
 
     .fretboard::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: repeating-linear-gradient(90deg, transparent 0 18%, rgba(255,255,255,0.34) 18% 18.7%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), transparent 42%, rgba(0,0,0,0.1));
       pointer-events: none;
     }
 
@@ -625,11 +789,52 @@
       .guitar-hero {
         min-height: 230px;
       }
+      .right-panel {
+        order: 2;
+      }
+      .main {
+        order: 1;
+      }
     }
 
     @media (max-width: 760px) {
       #eerste-snaren-app {
-        padding: 10px;
+        padding: 8px;
+      }
+      .sidebar,
+      .lesson,
+      .practice-panel,
+      .right-panel,
+      .card {
+        box-shadow: 0 10px 28px rgba(72, 47, 22, 0.12);
+      }
+      .sidebar {
+        padding: 12px;
+      }
+      .brand h1 {
+        font-size: 18px;
+      }
+      .lesson {
+        padding: 14px;
+        min-height: 0;
+      }
+      .lesson-grid {
+        gap: 8px;
+      }
+      .guitar-hero {
+        height: 176px;
+        min-height: 176px;
+        overflow: hidden;
+      }
+      .guitar-body {
+        width: 150px;
+        height: 150px;
+        top: 18px;
+      }
+      .guitar-neck {
+        width: 172px;
+        right: 0;
+        top: 73px;
       }
       .chord-row {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -638,7 +843,24 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
       .lesson h2 {
-        font-size: 38px;
+        font-size: 34px;
+        line-height: 1;
+      }
+      .lesson p {
+        font-size: 14px;
+      }
+      .actions .btn {
+        flex: 1 1 138px;
+        justify-content: center;
+      }
+      .actions .btn.icon {
+        flex: 0 0 42px;
+      }
+      .right-panel {
+        padding: 12px;
+      }
+      .lesson-step {
+        grid-template-columns: 26px 1fr 42px;
       }
       .stats {
         grid-template-columns: 1fr;
@@ -659,12 +881,12 @@
         </div>
       </div>
 
-      <div class="progress-ring" aria-label="0 procent van week 1 afgerond">
+      <div class="progress-ring" id="progressRing" aria-label="0 procent van de cursus afgerond">
         <svg viewBox="0 0 120 120" aria-hidden="true">
           <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
-          <circle class="ring-fg" cx="60" cy="60" r="52"></circle>
+          <circle class="ring-fg" id="ringFg" cx="60" cy="60" r="52"></circle>
         </svg>
-        <div class="ring-text"><span>0%</span><small>week 1</small></div>
+        <div class="ring-text"><span id="progressText">0%</span><small>cursus</small></div>
       </div>
 
       <nav class="nav-list" aria-label="App onderdelen">
@@ -674,21 +896,22 @@
         <button class="nav-item" type="button"><span class="nav-icon">✓</span><span>Pad</span></button>
       </nav>
 
-      <p class="tiny">Doel vandaag: de gitaar leren kennen, goed zitten en de zes snaren ontdekken.</p>
+      <p class="tiny" id="dailyGoal">Doel vandaag: de gitaar leren kennen, goed zitten en de zes snaren ontdekken.</p>
     </aside>
 
     <section class="main">
       <section class="lesson">
         <div class="lesson-grid">
           <div>
-            <span class="eyebrow">Les 1 • welkom bij je gitaar</span>
-            <h2>Begin met voelen, kijken en luisteren.</h2>
-            <p>Vandaag hoeft Bo nog geen akkoord te kunnen. Ze leert hoe de gitaar ligt, welke snaar dik of dun is, en hoe elke snaar klinkt als je rustig aanslaat.</p>
+            <span class="eyebrow" id="lessonEyebrow">Les 1 • welkom bij je gitaar</span>
+            <h2 id="lessonTitle">Begin met voelen, kijken en luisteren.</h2>
+            <p id="lessonBody">Vandaag hoeft Bo nog geen akkoord te kunnen. Ze leert hoe de gitaar ligt, welke snaar dik of dun is, en hoe elke snaar klinkt als je rustig aanslaat.</p>
+            <div class="lesson-progress" id="lessonProgress" aria-label="Cursusvoortgang"></div>
             <div class="actions">
-              <button class="btn primary" type="button" id="startLesson">Start bij les 1</button>
+              <button class="btn primary" type="button" id="startLesson">Start les 1</button>
               <button class="btn" type="button" id="demoStrum">Speel voorbeeld</button>
-              <button class="btn icon" type="button" aria-label="Vorige les">←</button>
-              <button class="btn icon" type="button" aria-label="Volgende les">→</button>
+              <button class="btn icon" type="button" id="prevLesson" aria-label="Vorige les">←</button>
+              <button class="btn icon" type="button" id="nextLesson" aria-label="Volgende les">→</button>
             </div>
           </div>
           <div class="guitar-hero" aria-hidden="true">
@@ -775,12 +998,15 @@
 
     <aside class="right-panel">
       <section class="card">
-        <h3>Weekpad</h3>
-        <div class="lesson-list">
-          <div class="mission"><span class="check">•</span><div><strong>Gitaar vasthouden</strong><br><span>houding en aanslaghand</span></div><span>2m</span></div>
-          <div class="mission"><span class="check"></span><div><strong>Snaren namen</strong><br><span>E A D G B e</span></div><span>4m</span></div>
-          <div class="mission"><span class="check"></span><div><strong>Losse snaren</strong><br><span>dik naar dun spelen</span></div><span>5m</span></div>
-          <div class="mission"><span class="check"></span><div><strong>Eerste akkoord</strong><br><span>Em ontdekken</span></div><span>8m</span></div>
+        <h3>Totale cursus</h3>
+        <div class="course-map" id="courseMap" aria-label="Alle lessen"></div>
+      </section>
+
+      <section class="card feedback-card">
+        <h3>Luistercoach</h3>
+        <div class="feedback-state">
+          <span class="feedback-light"></span>
+          <p class="tiny"><strong>Nog niet actief.</strong><br>Deze versie speelt voorbeeldtonen en reageert op tikken in de app. Meeluisteren via de microfoon en echte correcties kunnen we als volgende stap bouwen.</p>
         </div>
       </section>
 
@@ -822,12 +1048,140 @@
       const toggleBeat = app.querySelector("#toggleBeat");
       const demoStrum = app.querySelector("#demoStrum");
       const startLesson = app.querySelector("#startLesson");
+      const prevLesson = app.querySelector("#prevLesson");
+      const nextLesson = app.querySelector("#nextLesson");
+      const lessonEyebrow = app.querySelector("#lessonEyebrow");
+      const lessonTitle = app.querySelector("#lessonTitle");
+      const lessonBody = app.querySelector("#lessonBody");
+      const lessonProgress = app.querySelector("#lessonProgress");
+      const courseMap = app.querySelector("#courseMap");
+      const dailyGoal = app.querySelector("#dailyGoal");
+      const progressText = app.querySelector("#progressText");
+      const progressRing = app.querySelector("#progressRing");
+      const ringFg = app.querySelector("#ringFg");
       const minutes = app.querySelector("#minutes");
       const switches = app.querySelector("#switches");
       let selectedChord = "Em";
       let beatTimer = null;
       let beatIndex = 0;
       let audioCtx = null;
+      let currentLesson = 0;
+
+      const lessons = [
+        {
+          title: "Begin met voelen, kijken en luisteren.",
+          short: "Gitaar vasthouden",
+          label: "Les 1 • welkom bij je gitaar",
+          body: "Vandaag hoeft Bo nog geen akkoord te kunnen. Ze leert hoe de gitaar ligt, welke snaar dik of dun is, en hoe elke snaar klinkt als je rustig aanslaat.",
+          goal: "Doel vandaag: de gitaar leren kennen, goed zitten en de zes snaren ontdekken.",
+          time: "2m"
+        },
+        {
+          title: "Leer de zes snaren als een klein rijmpje.",
+          short: "Snaren namen",
+          label: "Les 2 • E A D G B e",
+          body: "Bo raakt elke snaar aan van dik naar dun en zegt de naam hardop mee. De app houdt het groot en visueel, zodat de volgorde blijft hangen.",
+          goal: "Doel vandaag: E A D G B e herkennen van dik naar dun.",
+          time: "4m"
+        },
+        {
+          title: "Speel losse snaren met rustige handen.",
+          short: "Losse snaren",
+          label: "Les 3 • eerste aanslag",
+          body: "Bo oefent een zachte aanslag en luistert of elke snaar vrij klinkt. Geen haast: mooi geluid is belangrijker dan snel spelen.",
+          goal: "Doel vandaag: alle zes snaren los en rustig aanslaan.",
+          time: "5m"
+        },
+        {
+          title: "Zet je eerste twee vingers neer voor Em.",
+          short: "Em akkoord",
+          label: "Les 4 • eerste akkoord",
+          body: "Em is een vriendelijke eerste greep. Bo ziet precies waar vinger 2 en 3 landen en speelt daarna langzaam alle snaren.",
+          goal: "Doel vandaag: Em neerzetten en alle snaren laten klinken.",
+          time: "8m"
+        },
+        {
+          title: "Ontdek Am en hoor het verschil.",
+          short: "Am akkoord",
+          label: "Les 5 • tweede akkoord",
+          body: "Am voelt anders onder je vingers en klinkt meteen als een liedje. Bo vergelijkt Em en Am zonder druk.",
+          goal: "Doel vandaag: Am leren en het verschil met Em horen.",
+          time: "8m"
+        },
+        {
+          title: "Wissel tussen Em en Am zonder te stoppen.",
+          short: "Eerste wissel",
+          label: "Les 6 • akkoordwissel",
+          body: "Nu wordt het muziek: Em, adem, Am. De app helpt met kleine herhalingen en een langzaam tempo.",
+          goal: "Doel vandaag: vijf rustige wissels tussen Em en Am.",
+          time: "8m"
+        },
+        {
+          title: "Speel mee met een simpel vier-tellen ritme.",
+          short: "Ritme",
+          label: "Les 7 • maatgevoel",
+          body: "Bo speelt omlaag op de tel en laat rust ertussen. Het ritmerooster laat zien wanneer haar hand beweegt.",
+          goal: "Doel vandaag: omlaag spelen op 1, 2, 3 en 4.",
+          time: "6m"
+        },
+        {
+          title: "Maak je eerste mini-liedje.",
+          short: "Mini-liedje",
+          label: "Les 8 • eerste liedje",
+          body: "Alles komt samen: twee akkoorden, rustig ritme en een korte ronde die Bo zelf kan herhalen.",
+          goal: "Doel vandaag: een mini-liedje spelen met Em en Am.",
+          time: "10m"
+        }
+      ];
+
+      function renderCourse() {
+        courseMap.innerHTML = "";
+        lessonProgress.innerHTML = "";
+        lessons.forEach((lesson, index) => {
+          const step = document.createElement("button");
+          step.type = "button";
+          step.className = "lesson-step";
+          step.dataset.index = String(index);
+          step.innerHTML = `<span class="check">${index < currentLesson ? "✓" : index === currentLesson ? "•" : ""}</span><div><strong>${lesson.short}</strong><br><span>${lesson.label}</span></div><small>${lesson.time}</small>`;
+          step.addEventListener("click", () => {
+            currentLesson = index;
+            renderLesson();
+          });
+          courseMap.appendChild(step);
+
+          const dot = document.createElement("span");
+          dot.className = "lesson-dot";
+          lessonProgress.appendChild(dot);
+        });
+      }
+
+      function renderLesson() {
+        const lesson = lessons[currentLesson];
+        lessonEyebrow.textContent = lesson.label;
+        lessonTitle.textContent = lesson.title;
+        lessonBody.textContent = lesson.body;
+        dailyGoal.textContent = lesson.goal;
+        startLesson.textContent = `Start les ${currentLesson + 1}`;
+        prevLesson.disabled = currentLesson === 0;
+        nextLesson.disabled = currentLesson === lessons.length - 1;
+
+        const percent = Math.round((currentLesson / lessons.length) * 100);
+        progressText.textContent = `${percent}%`;
+        progressRing.setAttribute("aria-label", `${percent} procent van de cursus afgerond`);
+        ringFg.style.strokeDashoffset = String(326 - (326 * percent / 100));
+
+        [...courseMap.querySelectorAll(".lesson-step")].forEach((step, index) => {
+          step.classList.toggle("active", index === currentLesson);
+          step.classList.toggle("done", index < currentLesson);
+          const check = step.querySelector(".check");
+          check.textContent = index < currentLesson ? "✓" : index === currentLesson ? "•" : "";
+        });
+
+        [...lessonProgress.querySelectorAll(".lesson-dot")].forEach((dot, index) => {
+          dot.classList.toggle("done", index < currentLesson);
+          dot.classList.toggle("current", index === currentLesson);
+        });
+      }
 
       function tone(freq, duration = 0.18) {
         audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
@@ -898,10 +1252,29 @@
       });
 
       startLesson.addEventListener("click", () => {
-        minutes.textContent = String(Number(minutes.textContent) + 8);
-        startLesson.textContent = "Les 1 gestart";
-        setTimeout(() => { startLesson.textContent = "Start bij les 1"; }, 1400);
+        minutes.textContent = String(Number(minutes.textContent) + parseInt(lessons[currentLesson].time, 10));
+        startLesson.textContent = `Les ${currentLesson + 1} gestart`;
+        setTimeout(() => { startLesson.textContent = `Start les ${currentLesson + 1}`; }, 1400);
       });
+
+      prevLesson.addEventListener("click", () => {
+        if (currentLesson > 0) {
+          currentLesson -= 1;
+          renderLesson();
+        }
+      });
+
+      nextLesson.addEventListener("click", () => {
+        if (currentLesson < lessons.length - 1) {
+          currentLesson += 1;
+          renderLesson();
+        }
+      });
+
+      renderCourse();
+      renderLesson();
     })();
   </script>
 </div>
+</body>
+</html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f1b447">
   <title>Eerste Snaren</title>
-  <meta name="description" content="Een beeldende gitaar-leerapp voor Bo om rustig met de eerste snaren te beginnen.">
+  <meta name="description" content="Een beeldende gitaar-leerapp waarmee je rustig met je eerste snaren begint.">
 </head>
 <body>
 <div id="eerste-snaren-app">
@@ -109,6 +109,18 @@
       color: var(--muted);
       font-size: 12px;
       line-height: 1.35;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      margin-top: 5px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(232, 195, 106, 0.32), rgba(35, 143, 135, 0.16));
+      border: 1px solid rgba(151, 108, 68, 0.22);
+      color: #5b2b1d;
+      font-size: 11px;
+      font-weight: 800;
     }
 
     .progress-ring {
@@ -517,6 +529,81 @@
       max-width: 520px;
     }
 
+    .lesson-player {
+      display: grid;
+      gap: 12px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.86), rgba(255,248,238,0.74));
+      border: 1px solid rgba(151, 108, 68, 0.2);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .lesson-player[hidden] {
+      display: none;
+    }
+
+    .step-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .step-header h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .step-count {
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .step-text {
+      margin: 0;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .coach-note {
+      border-left: 3px solid var(--teal);
+      padding: 8px 10px;
+      background: rgba(35, 143, 135, 0.08);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .step-list {
+      display: grid;
+      gap: 7px;
+    }
+
+    .step-item {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 8px;
+      align-items: center;
+      padding: 8px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.5);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .step-item.active {
+      background: rgba(232, 195, 106, 0.22);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .step-item.done {
+      color: var(--green);
+    }
+
     .lesson-dot {
       height: 8px;
       border-radius: 999px;
@@ -629,6 +716,7 @@
       color: var(--muted);
       font-size: 13px;
       line-height: 1.45;
+      margin-bottom: 12px;
     }
 
     .feedback-light {
@@ -639,6 +727,85 @@
       box-shadow: 0 0 0 5px rgba(241, 180, 71, 0.18);
       margin-top: 4px;
       flex: 0 0 auto;
+    }
+
+    .feedback-light.listening {
+      background: var(--teal);
+      box-shadow: 0 0 0 5px rgba(35, 143, 135, 0.18), 0 0 24px rgba(35, 143, 135, 0.4);
+    }
+
+    .string-targets {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      margin: 12px 0;
+    }
+
+    .target-btn {
+      border: 1px solid rgba(151, 108, 68, 0.24);
+      background: rgba(255,255,255,0.72);
+      border-radius: 8px;
+      min-height: 38px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .target-btn.active {
+      background: linear-gradient(135deg, #211611, #5d2d1d);
+      color: #fff;
+      border-color: #4d2419;
+    }
+
+    .tuner-meter {
+      position: relative;
+      height: 54px;
+      border-radius: 8px;
+      background:
+        linear-gradient(90deg, rgba(200, 95, 102, 0.22), rgba(232, 195, 106, 0.18) 38%, rgba(35, 143, 135, 0.24) 50%, rgba(232, 195, 106, 0.18) 62%, rgba(200, 95, 102, 0.22));
+      border: 1px solid rgba(151, 108, 68, 0.18);
+      overflow: hidden;
+      margin: 10px 0;
+    }
+
+    .tuner-meter::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: rgba(33, 22, 17, 0.55);
+    }
+
+    .tuner-needle {
+      position: absolute;
+      left: 50%;
+      top: 6px;
+      width: 4px;
+      height: 42px;
+      border-radius: 999px;
+      background: #211611;
+      transform: translateX(-50%);
+      transition: transform 0.12s ease;
+      box-shadow: 0 5px 14px rgba(33, 22, 17, 0.24);
+    }
+
+    .coach-readout {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .coach-pill {
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(151, 108, 68, 0.18);
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+    .coach-pill strong {
+      display: block;
+      font-size: 16px;
     }
 
     .fretboard-card {
@@ -877,7 +1044,8 @@
         <div class="brand-mark">ES</div>
         <div>
           <h1>Eerste<br>Snaren</h1>
-          <p>Bo's gitaarstart</p>
+          <p>Jouw gitaarstart</p>
+          <span class="brand-badge">Premium Spaanse gitaar</span>
         </div>
       </div>
 
@@ -905,7 +1073,7 @@
           <div>
             <span class="eyebrow" id="lessonEyebrow">Les 1 • welkom bij je gitaar</span>
             <h2 id="lessonTitle">Begin met voelen, kijken en luisteren.</h2>
-            <p id="lessonBody">Vandaag hoeft Bo nog geen akkoord te kunnen. Ze leert hoe de gitaar ligt, welke snaar dik of dun is, en hoe elke snaar klinkt als je rustig aanslaat.</p>
+            <p id="lessonBody">Je hoeft nog niets te kunnen. Vandaag leer je hoe je gitaar rustig tegen je aan ligt en hoe je eerste geluid maakt.</p>
             <div class="lesson-progress" id="lessonProgress" aria-label="Cursusvoortgang"></div>
             <div class="actions">
               <button class="btn primary" type="button" id="startLesson">Start les 1</button>
@@ -924,6 +1092,21 @@
               <span class="hero-string"></span><span class="hero-string"></span><span class="hero-string"></span>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="lesson-player" id="lessonPlayer" hidden aria-live="polite">
+        <div class="step-header">
+          <h3 id="stepTitle">Stap 1</h3>
+          <span class="step-count" id="stepCount">1 van 4</span>
+        </div>
+        <p class="step-text" id="stepText"></p>
+        <div class="coach-note" id="stepCoach"></div>
+        <div class="step-list" id="stepList" aria-label="Stappen in deze les"></div>
+        <div class="actions">
+          <button class="btn" type="button" id="prevStep">Vorige stap</button>
+          <button class="btn primary" type="button" id="nextStep">Volgende stap</button>
+          <button class="btn" type="button" id="finishLesson">Les afronden</button>
         </div>
       </section>
 
@@ -1005,9 +1188,27 @@
       <section class="card feedback-card">
         <h3>Luistercoach</h3>
         <div class="feedback-state">
-          <span class="feedback-light"></span>
-          <p class="tiny"><strong>Nog niet actief.</strong><br>Deze versie speelt voorbeeldtonen en reageert op tikken in de app. Meeluisteren via de microfoon en echte correcties kunnen we als volgende stap bouwen.</p>
+          <span class="feedback-light" id="micLight"></span>
+          <p class="tiny"><strong id="coachStatus">Kies een snaar en start de microfoon.</strong><br><span id="coachMessage">Speel een losse snaar. De coach luistert naar toonhoogte en geeft simpele feedback.</span></p>
         </div>
+        <button class="btn primary" type="button" id="toggleMic">Start microfoon</button>
+        <div class="string-targets" id="stringTargets" aria-label="Doelsnaar kiezen">
+          <button class="target-btn active" type="button" data-note="lage E">E</button>
+          <button class="target-btn" type="button" data-note="A">A</button>
+          <button class="target-btn" type="button" data-note="D">D</button>
+          <button class="target-btn" type="button" data-note="G">G</button>
+          <button class="target-btn" type="button" data-note="B">B</button>
+          <button class="target-btn" type="button" data-note="hoge e">e</button>
+        </div>
+        <div class="tuner-meter" aria-label="Toonhoogte meter">
+          <span class="tuner-needle" id="tunerNeedle"></span>
+        </div>
+        <div class="coach-readout">
+          <div class="coach-pill"><span class="tiny">Doel</span><strong id="targetReadout">E</strong></div>
+          <div class="coach-pill"><span class="tiny">Gehoord</span><strong id="heardReadout">-</strong></div>
+          <div class="coach-pill"><span class="tiny">Afwijking</span><strong id="centsReadout">-</strong></div>
+        </div>
+        <p class="tiny">Werkt het best op GitHub Pages via HTTPS. Speel een losse snaar dicht bij de telefoon.</p>
       </section>
 
       <section class="card rhythm">
@@ -1032,7 +1233,7 @@
       <section class="stats" aria-label="Voortgang">
         <div class="stat"><strong id="minutes">0</strong><span>minuten</span></div>
         <div class="stat"><strong id="switches">0</strong><span>wissels</span></div>
-        <div class="stat"><strong>0</strong><span>badges</span></div>
+        <div class="stat"><strong id="badges">0</strong><span>badges</span></div>
       </section>
     </aside>
   </main>
@@ -1054,6 +1255,15 @@
       const lessonTitle = app.querySelector("#lessonTitle");
       const lessonBody = app.querySelector("#lessonBody");
       const lessonProgress = app.querySelector("#lessonProgress");
+      const lessonPlayer = app.querySelector("#lessonPlayer");
+      const stepTitle = app.querySelector("#stepTitle");
+      const stepCount = app.querySelector("#stepCount");
+      const stepText = app.querySelector("#stepText");
+      const stepCoach = app.querySelector("#stepCoach");
+      const stepList = app.querySelector("#stepList");
+      const prevStep = app.querySelector("#prevStep");
+      const nextStep = app.querySelector("#nextStep");
+      const finishLesson = app.querySelector("#finishLesson");
       const courseMap = app.querySelector("#courseMap");
       const dailyGoal = app.querySelector("#dailyGoal");
       const progressText = app.querySelector("#progressText");
@@ -1061,76 +1271,142 @@
       const ringFg = app.querySelector("#ringFg");
       const minutes = app.querySelector("#minutes");
       const switches = app.querySelector("#switches");
+      const badges = app.querySelector("#badges");
+      const toggleMic = app.querySelector("#toggleMic");
+      const micLight = app.querySelector("#micLight");
+      const coachStatus = app.querySelector("#coachStatus");
+      const coachMessage = app.querySelector("#coachMessage");
+      const stringTargets = [...app.querySelectorAll(".target-btn")];
+      const tunerNeedle = app.querySelector("#tunerNeedle");
+      const targetReadout = app.querySelector("#targetReadout");
+      const heardReadout = app.querySelector("#heardReadout");
+      const centsReadout = app.querySelector("#centsReadout");
       let selectedChord = "Em";
       let beatTimer = null;
       let beatIndex = 0;
       let audioCtx = null;
       let currentLesson = 0;
+      let currentStep = 0;
+      let startedLesson = null;
+      const completedLessons = new Set();
+      let micStream = null;
+      let analyser = null;
+      let micSource = null;
+      let micFrame = null;
+      let listenTarget = "lage E";
 
       const lessons = [
         {
-          title: "Begin met voelen, kijken en luisteren.",
+          title: "Pak je gitaar en vind je fijne houding.",
           short: "Gitaar vasthouden",
           label: "Les 1 • welkom bij je gitaar",
-          body: "Vandaag hoeft Bo nog geen akkoord te kunnen. Ze leert hoe de gitaar ligt, welke snaar dik of dun is, en hoe elke snaar klinkt als je rustig aanslaat.",
-          goal: "Doel vandaag: de gitaar leren kennen, goed zitten en de zes snaren ontdekken.",
-          time: "2m"
+          body: "Je hoeft nog niets te kunnen. Vandaag leer je hoe je gitaar rustig tegen je aan ligt en hoe je eerste geluid maakt.",
+          goal: "Doel vandaag: goed zitten, ontspannen vasthouden en een eerste snaar aanslaan.",
+          time: "3m",
+          steps: [
+            { title: "Ga stevig zitten", text: "Zet beide voeten op de grond. Laat je schouders zakken. De gitaar rust tegen je buik en borst.", coach: "Als de gitaar wiebelt, schuif hem iets dichter naar je toe." },
+            { title: "Vind je aanslaghand", text: "Leg je hand boven het ronde klankgat. Strijk met je duim heel zacht over een snaar.", coach: "Zacht is goed. Je hoeft geen hard geluid te maken." },
+            { title: "Raak de dikke snaar aan", text: "Speel alleen de dikste snaar. Luister of hij lang doorklinkt.", coach: "Dat is je lage E-snaar. Die voelt het dikst." },
+            { title: "Rond af", text: "Speel nog drie rustige tonen. Adem rustig mee.", coach: "Klaar. Je eerste gitaargeluid is binnen." }
+          ]
         },
         {
-          title: "Leer de zes snaren als een klein rijmpje.",
+          title: "Leer de zes snaren van dik naar dun.",
           short: "Snaren namen",
           label: "Les 2 • E A D G B e",
-          body: "Bo raakt elke snaar aan van dik naar dun en zegt de naam hardop mee. De app houdt het groot en visueel, zodat de volgorde blijft hangen.",
-          goal: "Doel vandaag: E A D G B e herkennen van dik naar dun.",
-          time: "4m"
+          body: "Je leert de namen van de snaren. Van dik naar dun zijn ze: E, A, D, G, B, e.",
+          goal: "Doel vandaag: de volgorde E A D G B e hardop mee kunnen zeggen.",
+          time: "4m",
+          steps: [
+            { title: "Begin bij de dikste snaar", text: "Raak de dikste snaar aan en zeg: E.", coach: "Dit is de lage E. Groot geluid, dikke snaar." },
+            { title: "Ga een snaar omlaag", text: "Raak de volgende snaar aan en zeg: A. Daarna D. Daarna G.", coach: "Zeg ze langzaam. E, A, D, G." },
+            { title: "Eindig met B en hoge e", text: "Raak de twee dunste snaren aan en zeg: B, e.", coach: "De laatste e is dun en hoog. Daarom noemen we die hoge e." },
+            { title: "Speel de hele rij", text: "Speel nu van dik naar dun en zeg mee: E A D G B e.", coach: "Mooi. Je weet nu waar je op de gitaar bent." }
+          ]
         },
         {
-          title: "Speel losse snaren met rustige handen.",
+          title: "Speel losse snaren zonder haast.",
           short: "Losse snaren",
           label: "Les 3 • eerste aanslag",
-          body: "Bo oefent een zachte aanslag en luistert of elke snaar vrij klinkt. Geen haast: mooi geluid is belangrijker dan snel spelen.",
-          goal: "Doel vandaag: alle zes snaren los en rustig aanslaan.",
-          time: "5m"
+          body: "Je oefent met mooi geluid. Een goede toon is belangrijker dan snel spelen.",
+          goal: "Doel vandaag: elke snaar los laten klinken zonder te haasten.",
+          time: "5m",
+          steps: [
+            { title: "Speel E en wacht", text: "Speel de dikste snaar. Wacht tot je hem bijna niet meer hoort.", coach: "Luisteren is ook oefenen." },
+            { title: "Speel A, D en G", text: "Speel de volgende drie snaren een voor een. Na elke snaar wacht je even.", coach: "Als een snaar rammelt, speel zachter en probeer opnieuw." },
+            { title: "Speel B en e", text: "Speel de twee dunste snaren rustig. Die klinken hoger en lichter.", coach: "Dunne snaren hebben maar een kleine beweging nodig." },
+            { title: "Gebruik de luistercoach", text: "Kies een snaar in de Luistercoach en speel hem los bij je telefoon.", coach: "De coach kan nu horen of je dicht bij de goede toon zit." }
+          ]
         },
         {
-          title: "Zet je eerste twee vingers neer voor Em.",
+          title: "Zet je eerste akkoord neer: Em.",
           short: "Em akkoord",
           label: "Les 4 • eerste akkoord",
-          body: "Em is een vriendelijke eerste greep. Bo ziet precies waar vinger 2 en 3 landen en speelt daarna langzaam alle snaren.",
-          goal: "Doel vandaag: Em neerzetten en alle snaren laten klinken.",
-          time: "8m"
+          body: "Em is een fijne eerste greep. Je gebruikt twee vingers en mag alle snaren spelen.",
+          goal: "Doel vandaag: Em neerzetten en langzaam alle snaren laten klinken.",
+          time: "8m",
+          steps: [
+            { title: "Kijk naar de Em kaart", text: "Tik op Em in de akkoordtrainer. Kijk waar vinger 2 en 3 staan.", coach: "Je vingers staan naast elkaar, allebei in het tweede vakje." },
+            { title: "Plaats je vingers", text: "Zet je vingers rustig neer. Druk dicht achter het metalen fretje, niet erbovenop.", coach: "Dicht bij het fretje klinkt vaak mooier." },
+            { title: "Speel snaar voor snaar", text: "Speel van dik naar dun. Als een snaar dof klinkt, verplaats je vinger een klein beetje.", coach: "Een kleine verschuiving kan al genoeg zijn." },
+            { title: "Speel Em drie keer", text: "Haal je hand los, zet Em opnieuw neer en speel. Doe dat drie keer.", coach: "Dit is hoe je vingers het akkoord leren onthouden." }
+          ]
         },
         {
-          title: "Ontdek Am en hoor het verschil.",
+          title: "Ontdek je tweede akkoord: Am.",
           short: "Am akkoord",
           label: "Les 5 • tweede akkoord",
-          body: "Am voelt anders onder je vingers en klinkt meteen als een liedje. Bo vergelijkt Em en Am zonder druk.",
-          goal: "Doel vandaag: Am leren en het verschil met Em horen.",
-          time: "8m"
+          body: "Am klinkt anders dan Em. Je leert de vorm rustig opbouwen met drie vingers.",
+          goal: "Doel vandaag: Am neerzetten en het verschil met Em horen.",
+          time: "8m",
+          steps: [
+            { title: "Tik op Am", text: "Open de Am kaart. Kijk naar de drie stippen en de snaar met x.", coach: "Bij Am speel je niet de dikste snaar." },
+            { title: "Bouw Am langzaam", text: "Zet eerst vinger 1 neer, daarna vinger 2, daarna vinger 3.", coach: "Een akkoord mag je stap voor stap bouwen." },
+            { title: "Speel vanaf de A-snaar", text: "Sla aan vanaf de tweede dikste snaar. Laat de dikste snaar even met rust.", coach: "Dat maakt Am meteen schoner." },
+            { title: "Vergelijk Em en Am", text: "Speel Em, dan Am. Hoor je dat Am iets verdrietiger klinkt?", coach: "Dat verschil horen is muzikaal leren." }
+          ]
         },
         {
-          title: "Wissel tussen Em en Am zonder te stoppen.",
+          title: "Wissel rustig tussen Em en Am.",
           short: "Eerste wissel",
           label: "Les 6 • akkoordwissel",
-          body: "Nu wordt het muziek: Em, adem, Am. De app helpt met kleine herhalingen en een langzaam tempo.",
-          goal: "Doel vandaag: vijf rustige wissels tussen Em en Am.",
-          time: "8m"
+          body: "Nu wordt het muziek. Je leert wisselen zonder te schrikken van de stilte ertussen.",
+          goal: "Doel vandaag: vijf rustige wissels tussen Em en Am maken.",
+          time: "8m",
+          steps: [
+            { title: "Start op Em", text: "Zet Em neer en speel een keer langzaam van dik naar dun.", coach: "Laat het akkoord doorklinken voordat je wisselt." },
+            { title: "Til rustig op", text: "Til je vingers op en zweef even boven de snaren. Geen haast.", coach: "De stilte tussen twee akkoorden is normaal." },
+            { title: "Land op Am", text: "Zet Am neer en speel vanaf de A-snaar.", coach: "Kijk naar je vingers, niet naar snelheid." },
+            { title: "Doe vijf rondes", text: "Speel Em naar Am vijf keer. Elke ronde mag langzaam zijn.", coach: "Als het lukt zonder stress, win je." }
+          ]
         },
         {
-          title: "Speel mee met een simpel vier-tellen ritme.",
+          title: "Voel een simpel vier-tellen ritme.",
           short: "Ritme",
           label: "Les 7 • maatgevoel",
-          body: "Bo speelt omlaag op de tel en laat rust ertussen. Het ritmerooster laat zien wanneer haar hand beweegt.",
-          goal: "Doel vandaag: omlaag spelen op 1, 2, 3 en 4.",
-          time: "6m"
+          body: "Je hand leert bewegen op de tel. Eerst zonder moeilijk patroon, gewoon rustig omlaag.",
+          goal: "Doel vandaag: spelen op 1, 2, 3 en 4.",
+          time: "6m",
+          steps: [
+            { title: "Tel hardop", text: "Zeg langzaam: 1, 2, 3, 4. Tik eventueel met je voet mee.", coach: "Je voet is je ingebouwde metronoom." },
+            { title: "Speel op elke tel", text: "Zet Em neer en speel omlaag op 1, 2, 3 en 4.", coach: "Alleen omlaag. Dat is genoeg." },
+            { title: "Start de ritmeknop", text: "Gebruik de Ritme-kaart en speel mee met de vakjes.", coach: "Als het te snel voelt, stop je en begin je opnieuw." },
+            { title: "Blijf ontspannen", text: "Speel vier maten. Laat je arm losjes bewegen.", coach: "Ritme komt uit een ontspannen arm, niet uit spanning." }
+          ]
         },
         {
-          title: "Maak je eerste mini-liedje.",
+          title: "Speel je eerste mini-liedje.",
           short: "Mini-liedje",
           label: "Les 8 • eerste liedje",
-          body: "Alles komt samen: twee akkoorden, rustig ritme en een korte ronde die Bo zelf kan herhalen.",
-          goal: "Doel vandaag: een mini-liedje spelen met Em en Am.",
-          time: "10m"
+          body: "Je combineert twee akkoorden en een rustig ritme. Dit is je eerste kleine liedje.",
+          goal: "Doel vandaag: een ronde spelen met Em en Am.",
+          time: "10m",
+          steps: [
+            { title: "Speel twee tellen Em", text: "Zet Em neer. Tel 1, 2 en speel rustig omlaag.", coach: "Laat het geluid mooi open klinken." },
+            { title: "Speel twee tellen Am", text: "Wissel naar Am. Tel 3, 4 en speel vanaf de A-snaar.", coach: "Neem de tijd voor de wissel." },
+            { title: "Maak een ronde", text: "Speel Em, Em, Am, Am. Dat is je mini-liedje.", coach: "Herhaling maakt het herkenbaar." },
+            { title: "Speel het voor iemand", text: "Speel je mini-liedje een keer helemaal. Klaar is klaar.", coach: "Je hebt je eerste liedje gespeeld. Echt." }
+          ]
         }
       ];
 
@@ -1142,9 +1418,11 @@
           step.type = "button";
           step.className = "lesson-step";
           step.dataset.index = String(index);
-          step.innerHTML = `<span class="check">${index < currentLesson ? "✓" : index === currentLesson ? "•" : ""}</span><div><strong>${lesson.short}</strong><br><span>${lesson.label}</span></div><small>${lesson.time}</small>`;
+          step.innerHTML = `<span class="check">${completedLessons.has(index) ? "✓" : index === currentLesson ? "•" : ""}</span><div><strong>${lesson.short}</strong><br><span>${lesson.label}</span></div><small>${lesson.time}</small>`;
           step.addEventListener("click", () => {
             currentLesson = index;
+            currentStep = 0;
+            startedLesson = null;
             renderLesson();
           });
           courseMap.appendChild(step);
@@ -1161,25 +1439,54 @@
         lessonTitle.textContent = lesson.title;
         lessonBody.textContent = lesson.body;
         dailyGoal.textContent = lesson.goal;
-        startLesson.textContent = `Start les ${currentLesson + 1}`;
+        startLesson.textContent = startedLesson === currentLesson ? `Verder met les ${currentLesson + 1}` : `Start les ${currentLesson + 1}`;
         prevLesson.disabled = currentLesson === 0;
         nextLesson.disabled = currentLesson === lessons.length - 1;
 
-        const percent = Math.round((currentLesson / lessons.length) * 100);
+        const percent = Math.round((completedLessons.size / lessons.length) * 100);
         progressText.textContent = `${percent}%`;
         progressRing.setAttribute("aria-label", `${percent} procent van de cursus afgerond`);
         ringFg.style.strokeDashoffset = String(326 - (326 * percent / 100));
 
         [...courseMap.querySelectorAll(".lesson-step")].forEach((step, index) => {
           step.classList.toggle("active", index === currentLesson);
-          step.classList.toggle("done", index < currentLesson);
+          step.classList.toggle("done", completedLessons.has(index));
           const check = step.querySelector(".check");
-          check.textContent = index < currentLesson ? "✓" : index === currentLesson ? "•" : "";
+          check.textContent = completedLessons.has(index) ? "✓" : index === currentLesson ? "•" : "";
         });
 
         [...lessonProgress.querySelectorAll(".lesson-dot")].forEach((dot, index) => {
-          dot.classList.toggle("done", index < currentLesson);
+          dot.classList.toggle("done", completedLessons.has(index));
           dot.classList.toggle("current", index === currentLesson);
+        });
+
+        renderLessonPlayer();
+      }
+
+      function renderLessonPlayer() {
+        const lesson = lessons[currentLesson];
+        const isOpen = startedLesson === currentLesson;
+        lessonPlayer.hidden = !isOpen;
+        if (!isOpen) return;
+
+        const step = lesson.steps[currentStep];
+        stepTitle.textContent = step.title;
+        stepText.textContent = step.text;
+        stepCoach.textContent = step.coach;
+        stepCount.textContent = `${currentStep + 1} van ${lesson.steps.length}`;
+        prevStep.disabled = currentStep === 0;
+        nextStep.disabled = currentStep === lesson.steps.length - 1;
+        nextStep.textContent = currentStep === lesson.steps.length - 1 ? "Laatste stap" : "Volgende stap";
+        finishLesson.disabled = currentStep !== lesson.steps.length - 1;
+
+        stepList.innerHTML = "";
+        lesson.steps.forEach((item, index) => {
+          const row = document.createElement("div");
+          row.className = "step-item";
+          row.classList.toggle("active", index === currentStep);
+          row.classList.toggle("done", index < currentStep);
+          row.innerHTML = `<span>${index < currentStep ? "✓" : index === currentStep ? "•" : index + 1}</span><span>${item.title}</span>`;
+          stepList.appendChild(row);
         });
       }
 
@@ -1206,6 +1513,140 @@
         "hoge e": 329.63
       };
 
+      const noteLabels = {
+        "lage E": "E",
+        A: "A",
+        D: "D",
+        G: "G",
+        B: "B",
+        "hoge e": "e"
+      };
+
+      function centsOff(freq, target) {
+        return Math.round(1200 * Math.log2(freq / target));
+      }
+
+      function nearestOpenString(freq) {
+        return Object.entries(freqs).reduce((best, [name, target]) => {
+          const cents = Math.abs(centsOff(freq, target));
+          return cents < best.cents ? { name, target, cents } : best;
+        }, { name: "-", target: 0, cents: Infinity });
+      }
+
+      function autoCorrelate(buffer, sampleRate) {
+        let rms = 0;
+        for (let i = 0; i < buffer.length; i += 1) rms += buffer[i] * buffer[i];
+        rms = Math.sqrt(rms / buffer.length);
+        if (rms < 0.012) return -1;
+
+        let bestOffset = -1;
+        let bestCorrelation = 0;
+        const minOffset = Math.floor(sampleRate / 420);
+        const maxOffset = Math.floor(sampleRate / 70);
+
+        for (let offset = minOffset; offset <= maxOffset; offset += 1) {
+          let correlation = 0;
+          for (let i = 0; i < buffer.length - offset; i += 1) {
+            correlation += buffer[i] * buffer[i + offset];
+          }
+          correlation = correlation / (buffer.length - offset);
+          if (correlation > bestCorrelation) {
+            bestCorrelation = correlation;
+            bestOffset = offset;
+          }
+        }
+
+        if (bestCorrelation < 0.01 || bestOffset === -1) return -1;
+        return sampleRate / bestOffset;
+      }
+
+      function setCoachIdle(message = "Speel een losse snaar. De coach luistert naar toonhoogte en geeft simpele feedback.") {
+        micLight.classList.remove("listening");
+        toggleMic.textContent = "Start microfoon";
+        coachStatus.textContent = "Kies een snaar en start de microfoon.";
+        coachMessage.textContent = message;
+        heardReadout.textContent = "-";
+        centsReadout.textContent = "-";
+        tunerNeedle.style.transform = "translateX(-50%)";
+      }
+
+      function updateCoach(freq) {
+        const target = freqs[listenTarget];
+        const cents = centsOff(freq, target);
+        const nearest = nearestOpenString(freq);
+        const clamped = Math.max(-50, Math.min(50, cents));
+        tunerNeedle.style.transform = `translateX(calc(-50% + ${clamped * 1.9}px))`;
+        heardReadout.textContent = `${Math.round(freq)} Hz`;
+        centsReadout.textContent = `${cents > 0 ? "+" : ""}${cents}`;
+
+        if (Math.abs(cents) <= 10) {
+          coachStatus.textContent = "Mooi, die zit goed.";
+          coachMessage.textContent = `${noteLabels[listenTarget]} klinkt zuiver. Hou deze rustige aanslag vast.`;
+        } else if (nearest.name !== listenTarget && nearest.cents < Math.abs(cents)) {
+          coachStatus.textContent = `Ik hoor vooral ${noteLabels[nearest.name]}.`;
+          coachMessage.textContent = `Je doel is ${noteLabels[listenTarget]}. Kies eventueel die snaar op de gitaar en speel hem los.`;
+        } else if (cents < 0) {
+          coachStatus.textContent = "Iets te laag.";
+          coachMessage.textContent = "Draai de stemsleutel heel voorzichtig omhoog en speel opnieuw.";
+        } else {
+          coachStatus.textContent = "Iets te hoog.";
+          coachMessage.textContent = "Draai de stemsleutel heel voorzichtig omlaag en probeer nog eens.";
+        }
+      }
+
+      function listenLoop() {
+        if (!analyser || !audioCtx) return;
+        const buffer = new Float32Array(analyser.fftSize);
+        analyser.getFloatTimeDomainData(buffer);
+        const pitch = autoCorrelate(buffer, audioCtx.sampleRate);
+        if (pitch > 0) {
+          updateCoach(pitch);
+        } else {
+          coachStatus.textContent = "Ik luister...";
+          coachMessage.textContent = `Speel de ${noteLabels[listenTarget]}-snaar iets duidelijker, een voor een.`;
+        }
+        micFrame = requestAnimationFrame(listenLoop);
+      }
+
+      async function startMic() {
+        try {
+          if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+            setCoachIdle("Deze browser ondersteunt microfoonluisteren niet. Gebruik Safari of Chrome via de GitHub Pages-link.");
+            return;
+          }
+          audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+          if (audioCtx.state === "suspended") await audioCtx.resume();
+          micStream = await navigator.mediaDevices.getUserMedia({
+            audio: {
+              echoCancellation: false,
+              noiseSuppression: false,
+              autoGainControl: false
+            }
+          });
+          analyser = audioCtx.createAnalyser();
+          analyser.fftSize = 2048;
+          micSource = audioCtx.createMediaStreamSource(micStream);
+          micSource.connect(analyser);
+          micLight.classList.add("listening");
+          toggleMic.textContent = "Stop microfoon";
+          coachStatus.textContent = "Ik luister...";
+          coachMessage.textContent = `Speel nu de ${noteLabels[listenTarget]}-snaar.`;
+          listenLoop();
+        } catch (error) {
+          setCoachIdle("Microfoon niet gestart. Controleer toestemming, open de GitHub Pages-link via HTTPS en probeer opnieuw.");
+        }
+      }
+
+      function stopMic() {
+        if (micFrame) cancelAnimationFrame(micFrame);
+        micFrame = null;
+        if (micStream) micStream.getTracks().forEach(track => track.stop());
+        micStream = null;
+        analyser = null;
+        micSource = null;
+        setCoachIdle("Microfoon gestopt. Start opnieuw wanneer je een snaar wil checken.");
+      }
+
       chordCards.forEach(card => {
         card.addEventListener("click", () => {
           selectedChord = card.dataset.chord;
@@ -1223,7 +1664,28 @@
           string.classList.add("playing");
           playedNote.textContent = `${note} klinkt in ${selectedChord}`;
           tone(freqs[note]);
+          listenTarget = note;
+          targetReadout.textContent = noteLabels[listenTarget];
+          stringTargets.forEach(btn => btn.classList.toggle("active", btn.dataset.note === listenTarget));
         });
+      });
+
+      stringTargets.forEach(btn => {
+        btn.addEventListener("click", () => {
+          listenTarget = btn.dataset.note;
+          targetReadout.textContent = noteLabels[listenTarget];
+          stringTargets.forEach(item => item.classList.toggle("active", item === btn));
+          coachStatus.textContent = `${noteLabels[listenTarget]} gekozen.`;
+          coachMessage.textContent = micStream ? `Speel nu de ${noteLabels[listenTarget]}-snaar.` : "Start de microfoon en speel deze snaar los.";
+        });
+      });
+
+      toggleMic.addEventListener("click", () => {
+        if (micStream) {
+          stopMic();
+        } else {
+          startMic();
+        }
       });
 
       function stepBeat() {
@@ -1252,14 +1714,46 @@
       });
 
       startLesson.addEventListener("click", () => {
+        startedLesson = currentLesson;
+        currentStep = 0;
+        renderLesson();
+        lessonPlayer.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      prevStep.addEventListener("click", () => {
+        if (currentStep > 0) {
+          currentStep -= 1;
+          renderLessonPlayer();
+        }
+      });
+
+      nextStep.addEventListener("click", () => {
+        const steps = lessons[currentLesson].steps;
+        if (currentStep < steps.length - 1) {
+          currentStep += 1;
+          renderLessonPlayer();
+        }
+      });
+
+      finishLesson.addEventListener("click", () => {
+        completedLessons.add(currentLesson);
         minutes.textContent = String(Number(minutes.textContent) + parseInt(lessons[currentLesson].time, 10));
-        startLesson.textContent = `Les ${currentLesson + 1} gestart`;
-        setTimeout(() => { startLesson.textContent = `Start les ${currentLesson + 1}`; }, 1400);
+        badges.textContent = String(completedLessons.size);
+        finishLesson.textContent = "Les afgerond";
+        setTimeout(() => { finishLesson.textContent = "Les afronden"; }, 1200);
+        if (currentLesson < lessons.length - 1) {
+          currentLesson += 1;
+          currentStep = 0;
+          startedLesson = null;
+        }
+        renderLesson();
       });
 
       prevLesson.addEventListener("click", () => {
         if (currentLesson > 0) {
           currentLesson -= 1;
+          currentStep = 0;
+          startedLesson = null;
           renderLesson();
         }
       });
@@ -1267,6 +1761,8 @@
       nextLesson.addEventListener("click", () => {
         if (currentLesson < lessons.length - 1) {
           currentLesson += 1;
+          currentStep = 0;
+          startedLesson = null;
           renderLesson();
         }
       });

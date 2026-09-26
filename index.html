@@ -936,6 +936,165 @@
       box-shadow: 0 0 0 5px rgba(35, 143, 135, 0.18), 0 0 24px rgba(35, 143, 135, 0.4);
     }
 
+    .session-modes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .session-btn {
+      border: 1px solid rgba(151, 108, 68, 0.22);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.66);
+      padding: 10px 8px;
+      color: var(--ink);
+      text-align: left;
+      min-height: 64px;
+    }
+
+    .session-btn.active {
+      background: linear-gradient(135deg, #211611, #5d2d1d);
+      color: #fff;
+      border-color: #4d2419;
+    }
+
+    .session-btn strong,
+    .session-btn span {
+      display: block;
+    }
+
+    .session-btn span {
+      color: inherit;
+      opacity: 0.72;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .session-plan {
+      display: grid;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .session-line {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .session-line span:first-child {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(232, 195, 106, 0.24);
+      color: #5b2b1d;
+      font-weight: 800;
+    }
+
+    .chord-inspector {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      border: 1px solid rgba(151, 108, 68, 0.18);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.74), rgba(255,248,238,0.62));
+      padding: 12px;
+    }
+
+    .big-chord-neck {
+      width: 170px;
+      height: 190px;
+      position: relative;
+      border-radius: 8px;
+      background:
+        linear-gradient(#3e2c23, #3e2c23) 0 24px / 100% 5px no-repeat,
+        repeating-linear-gradient(90deg, transparent 0 31px, rgba(255,255,255,0.82) 31px 34px),
+        repeating-linear-gradient(180deg, transparent 0 37px, rgba(232,195,106,0.5) 37px 40px),
+        linear-gradient(90deg, #4d2419, #875435);
+      box-shadow: inset 0 9px 0 rgba(255,255,255,0.08), 0 15px 28px rgba(77,36,25,0.12);
+    }
+
+    .big-finger {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 0;
+      background: var(--rose);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 8px 18px rgba(92,42,28,0.24);
+    }
+
+    .big-finger.active {
+      background: var(--teal);
+      outline: 4px solid rgba(35,143,135,0.18);
+    }
+
+    .muted-string {
+      position: absolute;
+      top: 5px;
+      color: #fff;
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .chord-copy {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+    }
+
+    .chord-copy h4 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .premium-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%) translateY(18px);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 20;
+      min-width: min(420px, calc(100vw - 32px));
+      padding: 14px 16px;
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(232,195,106,0.34), transparent 28%),
+        linear-gradient(135deg, rgba(33,22,17,0.96), rgba(93,45,29,0.96));
+      color: #fff;
+      box-shadow: 0 24px 60px rgba(33,22,17,0.35);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .premium-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .premium-toast strong,
+    .premium-toast span {
+      display: block;
+    }
+
+    .premium-toast span {
+      opacity: 0.78;
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
     .string-targets {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1234,6 +1393,15 @@
       .step-stage {
         grid-template-columns: 1fr;
       }
+      .session-modes {
+        grid-template-columns: 1fr;
+      }
+      .chord-inspector {
+        grid-template-columns: 1fr;
+      }
+      .big-chord-neck {
+        justify-self: center;
+      }
       .visual-card {
         min-height: 190px;
       }
@@ -1279,6 +1447,19 @@
     </aside>
 
     <section class="main">
+      <section class="practice-panel">
+        <div class="section-title">
+          <h3>Bo's sessie</h3>
+          <span class="tiny" id="sessionHint">Kies hoe lang je vandaag wil spelen.</span>
+        </div>
+        <div class="session-modes" id="sessionModes" aria-label="Sessie kiezen">
+          <button class="session-btn active" type="button" data-session="kort"><strong>5 min</strong><span>Korte start</span></button>
+          <button class="session-btn" type="button" data-session="focus"><strong>10 min</strong><span>Rustig leren</span></button>
+          <button class="session-btn" type="button" data-session="vrij"><strong>Vrij</strong><span>Zelf oefenen</span></button>
+        </div>
+        <div class="session-plan" id="sessionPlan" aria-label="Sessieplan"></div>
+      </section>
+
       <section class="lesson">
         <div class="lesson-grid">
           <div>
@@ -1381,6 +1562,14 @@
             <span class="string-labels"><span>x</span><span>x</span><span>D</span><span>G</span><span>B</span><span>e</span></span>
           </button>
         </div>
+        <div class="chord-inspector">
+          <div class="big-chord-neck" id="bigChordNeck" aria-label="Grote akkoordviewer"></div>
+          <div class="chord-copy">
+            <h4 id="inspectorTitle">Em akkoord</h4>
+            <p class="step-detail" id="inspectorText">Tik op een vingerstip om te zien waar die vinger landt. Begin rustig: vingers rond, duim achter de hals.</p>
+            <div class="coach-note" id="fingerCoach">Vinger 2 en 3 staan naast elkaar in het tweede vakje.</div>
+          </div>
+        </div>
       </section>
 
       <section class="practice-panel fretboard-card">
@@ -1457,12 +1646,26 @@
       </section>
     </aside>
   </main>
+  <div class="premium-toast" id="premiumToast" role="status" aria-live="polite">
+    <strong id="toastTitle">Mooie stap</strong>
+    <span id="toastText">Rustig gespeeld.</span>
+  </div>
 
   <script>
     (() => {
       const app = document.getElementById("eerste-snaren-app");
       const chordCards = [...app.querySelectorAll(".chord-card")];
       const chordHint = app.querySelector("#chordHint");
+      const sessionModes = [...app.querySelectorAll(".session-btn")];
+      const sessionHint = app.querySelector("#sessionHint");
+      const sessionPlan = app.querySelector("#sessionPlan");
+      const bigChordNeck = app.querySelector("#bigChordNeck");
+      const inspectorTitle = app.querySelector("#inspectorTitle");
+      const inspectorText = app.querySelector("#inspectorText");
+      const fingerCoach = app.querySelector("#fingerCoach");
+      const premiumToast = document.getElementById("premiumToast");
+      const toastTitle = document.getElementById("toastTitle");
+      const toastText = document.getElementById("toastText");
       const playedNote = app.querySelector("#playedNote");
       const strings = [...app.querySelectorAll(".string-btn")];
       const beats = [...app.querySelectorAll(".beat")];
@@ -1511,12 +1714,14 @@
       let currentLesson = 0;
       let currentStep = 0;
       let startedLesson = null;
+      let currentSession = "kort";
       const completedLessons = new Set();
       let micStream = null;
       let analyser = null;
       let micSource = null;
       let micFrame = null;
       let listenTarget = "lage E";
+      let lastGoodToneAt = 0;
 
       const lessons = [
         {
@@ -1689,6 +1894,129 @@
           Object.assign(step, stepGuidance[lessonIndex][stepIndex]);
         });
       });
+
+      const sessionPlans = {
+        kort: {
+          hint: "Korte start: warm worden, een lesstap, een snaar luisteren.",
+          lines: ["Warm je hand op met 3 losse snaren.", "Doe 1 stap uit je huidige les.", "Check 1 snaar met de luistercoach."]
+        },
+        focus: {
+          hint: "Rustig leren: les, akkoordviewer en afsluiten met ritme.",
+          lines: ["Start je huidige les en doe 2 stappen.", "Tik in de akkoordviewer op elke vinger.", "Speel 4 tellen mee met Ritme."]
+        },
+        vrij: {
+          hint: "Vrij oefenen: kies zelf les, snaar of akkoord.",
+          lines: ["Kies een les in de totale cursus.", "Gebruik de luistercoach voor E A D G B e.", "Sluit af met je mooiste akkoord."]
+        }
+      };
+
+      const chordLibrary = {
+        Em: {
+          title: "Em akkoord",
+          text: "Em is je vriendelijke eerste akkoord. Je mag alle snaren spelen.",
+          coach: "Tik op vinger 2 of 3. Zet je duim achter de hals en houd je vingers rond.",
+          fingers: [
+            { n: "2", x: 78, y: 78, text: "Vinger 2 landt op de A-snaar in het tweede vakje. Zet hem dicht achter het fretje." },
+            { n: "3", x: 110, y: 78, text: "Vinger 3 landt op de D-snaar in hetzelfde vakje. Laat ruimte onder je vingerboog." }
+          ],
+          muted: []
+        },
+        Am: {
+          title: "Am akkoord",
+          text: "Am gebruikt drie vingers. Je speelt vanaf de A-snaar; de dikste E sla je over.",
+          coach: "Bouw Am rustig: eerst 1, dan 2, dan 3. Je hoeft niet alles tegelijk neer te zetten.",
+          fingers: [
+            { n: "1", x: 128, y: 60, text: "Vinger 1 staat op de B-snaar in het eerste vakje. Druk met je vingertop." },
+            { n: "2", x: 78, y: 96, text: "Vinger 2 staat op de D-snaar in het tweede vakje." },
+            { n: "3", x: 110, y: 96, text: "Vinger 3 staat op de G-snaar naast vinger 2." }
+          ],
+          muted: [{ x: 14, label: "x" }]
+        },
+        G: {
+          title: "G akkoord",
+          text: "G klinkt groot en open. Dit akkoord komt later uitgebreider terug.",
+          coach: "Begin alleen met kijken. Voel hoeveel verder je vingers uit elkaar staan.",
+          fingers: [
+            { n: "2", x: 14, y: 132, text: "Vinger 2 staat laag op de dikke E-snaar." },
+            { n: "1", x: 46, y: 96, text: "Vinger 1 staat op de A-snaar." },
+            { n: "3", x: 160, y: 132, text: "Vinger 3 staat op de hoge e-snaar." }
+          ],
+          muted: []
+        },
+        C: {
+          title: "C akkoord",
+          text: "C is een klassiek beginnersakkoord met een mooie warme klank.",
+          coach: "Speel later vanaf de A-snaar. De dikste snaar blijft stil.",
+          fingers: [
+            { n: "3", x: 46, y: 132, text: "Vinger 3 staat op de A-snaar in het derde vakje." },
+            { n: "2", x: 78, y: 96, text: "Vinger 2 staat op de D-snaar in het tweede vakje." },
+            { n: "1", x: 128, y: 60, text: "Vinger 1 staat op de B-snaar in het eerste vakje." }
+          ],
+          muted: [{ x: 14, label: "x" }]
+        },
+        D: {
+          title: "D akkoord",
+          text: "D is helder en hoog. Je speelt vanaf de D-snaar.",
+          coach: "Let op de x'en: de twee dikste snaren speel je nu niet.",
+          fingers: [
+            { n: "1", x: 110, y: 96, text: "Vinger 1 staat op de G-snaar in het tweede vakje." },
+            { n: "3", x: 128, y: 132, text: "Vinger 3 staat op de B-snaar in het derde vakje." },
+            { n: "2", x: 160, y: 96, text: "Vinger 2 staat op de hoge e-snaar in het tweede vakje." }
+          ],
+          muted: [{ x: 14, label: "x" }, { x: 46, label: "x" }]
+        }
+      };
+
+      function showToast(title, text) {
+        toastTitle.textContent = title;
+        toastText.textContent = text;
+        premiumToast.classList.add("show");
+        setTimeout(() => premiumToast.classList.remove("show"), 2200);
+      }
+
+      function premiumChime(type = "step") {
+        audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+        const now = audioCtx.currentTime;
+        const notes = type === "finish" ? [329.63, 392, 493.88] : [246.94, 329.63];
+        notes.forEach((freq, index) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "sine";
+          osc.frequency.value = freq;
+          gain.gain.setValueAtTime(0.0001, now + index * 0.08);
+          gain.gain.exponentialRampToValueAtTime(0.08, now + index * 0.08 + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + index * 0.08 + 0.42);
+          osc.connect(gain).connect(audioCtx.destination);
+          osc.start(now + index * 0.08);
+          osc.stop(now + index * 0.08 + 0.45);
+        });
+      }
+
+      function renderSession() {
+        const plan = sessionPlans[currentSession];
+        sessionHint.textContent = plan.hint;
+        sessionPlan.innerHTML = plan.lines.map((line, index) => `<div class="session-line"><span>${index + 1}</span><strong>${line}</strong></div>`).join("");
+        sessionModes.forEach(btn => btn.classList.toggle("active", btn.dataset.session === currentSession));
+      }
+
+      function renderChordInspector(chord = selectedChord) {
+        const data = chordLibrary[chord] || chordLibrary.Em;
+        inspectorTitle.textContent = data.title;
+        inspectorText.textContent = data.text;
+        fingerCoach.textContent = data.coach;
+        bigChordNeck.innerHTML = [
+          ...data.muted.map(mark => `<span class="muted-string" style="left:${mark.x}px;">${mark.label}</span>`),
+          ...data.fingers.map((finger, index) => `<button class="big-finger${index === 0 ? " active" : ""}" type="button" style="left:${finger.x}px;top:${finger.y}px;" data-text="${finger.text.replace(/"/g, "&quot;")}">${finger.n}</button>`)
+        ].join("");
+        [...bigChordNeck.querySelectorAll(".big-finger")].forEach(btn => {
+          btn.addEventListener("click", () => {
+            [...bigChordNeck.querySelectorAll(".big-finger")].forEach(item => item.classList.remove("active"));
+            btn.classList.add("active");
+            fingerCoach.textContent = btn.dataset.text;
+            premiumChime("step");
+          });
+        });
+      }
 
       function renderCourse() {
         courseMap.innerHTML = "";
@@ -1918,6 +2246,11 @@
         if (Math.abs(cents) <= 10) {
           coachStatus.textContent = "Mooi, die zit goed.";
           coachMessage.textContent = `${noteLabels[listenTarget]} klinkt zuiver. Hou deze rustige aanslag vast.`;
+          if (Date.now() - lastGoodToneAt > 2600) {
+            lastGoodToneAt = Date.now();
+            premiumChime("step");
+            showToast("Mooie toon", `${noteLabels[listenTarget]} klinkt zuiver.`);
+          }
         } else if (nearest.name !== listenTarget && nearest.cents < Math.abs(cents)) {
           coachStatus.textContent = `Ik hoor vooral ${noteLabels[nearest.name]}.`;
           coachMessage.textContent = `Je doel is ${noteLabels[listenTarget]}. Kies eventueel die snaar op de gitaar en speel hem los.`;
@@ -1988,7 +2321,18 @@
           selectedChord = card.dataset.chord;
           chordCards.forEach(item => item.classList.toggle("active", item === card));
           chordHint.textContent = `${selectedChord} gekozen. Speel elke snaar langzaam van dik naar dun.`;
+          renderChordInspector(selectedChord);
+          showToast(`${selectedChord} gekozen`, "Tik op een vingerstip in de grote akkoordviewer.");
           switches.textContent = String(Number(switches.textContent) + 1);
+        });
+      });
+
+      sessionModes.forEach(btn => {
+        btn.addEventListener("click", () => {
+          currentSession = btn.dataset.session;
+          renderSession();
+          premiumChime("step");
+          showToast("Sessie gekozen", sessionPlans[currentSession].hint);
         });
       });
 
@@ -2071,6 +2415,7 @@
           if ("speechSynthesis" in window) window.speechSynthesis.cancel();
           currentStep += 1;
           renderLessonPlayer();
+          premiumChime("step");
         }
       });
 
@@ -2079,6 +2424,8 @@
         completedLessons.add(currentLesson);
         minutes.textContent = String(Number(minutes.textContent) + parseInt(lessons[currentLesson].time, 10));
         badges.textContent = String(completedLessons.size);
+        premiumChime("finish");
+        showToast("Les afgerond", "Mooie stap. Je hebt vandaag echt geoefend.");
         finishLesson.textContent = "Les afgerond";
         setTimeout(() => { finishLesson.textContent = "Les afronden"; }, 1200);
         if (currentLesson < lessons.length - 1) {
@@ -2111,6 +2458,8 @@
 
       speakStep.addEventListener("click", speakCurrentStep);
 
+      renderSession();
+      renderChordInspector("Em");
       renderCourse();
       renderLesson();
     })();

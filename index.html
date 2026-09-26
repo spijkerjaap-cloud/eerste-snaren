@@ -555,6 +555,13 @@
       font-size: 18px;
     }
 
+    .step-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
     .step-count {
       color: var(--muted);
       font-weight: 800;
@@ -566,6 +573,201 @@
       margin: 0;
       color: var(--ink);
       line-height: 1.5;
+    }
+
+    .step-detail {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .step-stage {
+      display: grid;
+      grid-template-columns: minmax(210px, 0.9fr) minmax(0, 1.1fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .visual-card {
+      min-height: 220px;
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 70% 18%, rgba(232, 195, 106, 0.28), transparent 28%),
+        linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,240,219,0.74));
+      border: 1px solid rgba(151, 108, 68, 0.2);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      padding: 14px;
+    }
+
+    .visual-caption {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .mini-guitar {
+      width: 190px;
+      height: 170px;
+      position: relative;
+    }
+
+    .mini-body {
+      position: absolute;
+      left: 14px;
+      top: 28px;
+      width: 132px;
+      height: 112px;
+      border-radius: 48% 52% 48% 52% / 58% 58% 42% 42%;
+      background:
+        radial-gradient(circle at 50% 51%, #2b1710 0 16%, transparent 17%),
+        radial-gradient(circle at 50% 51%, transparent 0 22%, rgba(232, 195, 106, 0.9) 23% 25%, transparent 26%),
+        linear-gradient(120deg, #efb469, #b76432 70%);
+      box-shadow: inset -16px -12px 0 rgba(77,36,25,0.16);
+      transform: rotate(-6deg);
+    }
+
+    .mini-neck {
+      position: absolute;
+      left: 116px;
+      top: 77px;
+      width: 84px;
+      height: 28px;
+      border-radius: 5px;
+      background:
+        repeating-linear-gradient(90deg, transparent 0 19px, rgba(232,195,106,0.5) 19px 21px),
+        linear-gradient(90deg, #4d2419, #825033);
+      transform: rotate(-6deg);
+    }
+
+    .mini-string {
+      position: absolute;
+      left: 10px;
+      right: 4px;
+      height: 1px;
+      background: rgba(255,255,255,0.8);
+    }
+
+    .mini-string:nth-child(1) { top: 5px; }
+    .mini-string:nth-child(2) { top: 9px; }
+    .mini-string:nth-child(3) { top: 13px; }
+    .mini-string:nth-child(4) { top: 17px; }
+    .mini-string:nth-child(5) { top: 21px; }
+    .mini-string:nth-child(6) { top: 25px; }
+
+    .hand {
+      position: absolute;
+      width: 62px;
+      height: 54px;
+      border-radius: 28px 28px 22px 22px;
+      background: linear-gradient(135deg, #f0b27d, #c97d50);
+      box-shadow: inset -8px -8px 0 rgba(112, 57, 32, 0.12), 0 10px 18px rgba(77,36,25,0.16);
+    }
+
+    .hand::before,
+    .hand::after {
+      content: "";
+      position: absolute;
+      background: linear-gradient(135deg, #f0b27d, #c97d50);
+      border-radius: 999px;
+    }
+
+    .hand::before {
+      width: 18px;
+      height: 58px;
+      left: 9px;
+      top: -39px;
+      transform: rotate(-8deg);
+    }
+
+    .hand::after {
+      width: 18px;
+      height: 50px;
+      left: 35px;
+      top: -33px;
+      transform: rotate(8deg);
+    }
+
+    .hand.strum {
+      left: 52px;
+      top: 64px;
+      transform: rotate(-20deg);
+    }
+
+    .hand.fret {
+      left: 121px;
+      top: 56px;
+      transform: rotate(18deg) scale(0.82);
+    }
+
+    .arrow-line {
+      position: absolute;
+      width: 70px;
+      height: 26px;
+      border-bottom: 4px solid var(--teal);
+      border-right: 4px solid var(--teal);
+      border-radius: 0 0 18px 0;
+    }
+
+    .arrow-line::after {
+      content: "";
+      position: absolute;
+      right: -7px;
+      bottom: -8px;
+      border-left: 10px solid var(--teal);
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      transform: rotate(24deg);
+    }
+
+    .arrow-line.down {
+      left: 92px;
+      top: 49px;
+      transform: rotate(86deg);
+    }
+
+    .finger-dot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--rose);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 11px;
+      box-shadow: 0 8px 14px rgba(92, 42, 28, 0.2);
+    }
+
+    .visual-neck {
+      width: 230px;
+      height: 126px;
+      border-radius: 8px;
+      background:
+        repeating-linear-gradient(90deg, transparent 0 48px, rgba(232,195,106,0.55) 48px 51px),
+        repeating-linear-gradient(180deg, transparent 0 19px, rgba(255,255,255,0.78) 19px 21px),
+        linear-gradient(90deg, #4d2419, #875435);
+      position: relative;
+      box-shadow: inset 0 10px 0 rgba(255,255,255,0.08);
+    }
+
+    .visual-neck .finger-dot:nth-child(1) { left: 78px; top: 42px; }
+    .visual-neck .finger-dot:nth-child(2) { left: 79px; top: 63px; }
+    .visual-neck .finger-dot:nth-child(3) { left: 126px; top: 42px; }
+
+    .text-stack {
+      display: grid;
+      gap: 10px;
+      align-content: start;
     }
 
     .coach-note {
@@ -1029,6 +1231,15 @@
       .lesson-step {
         grid-template-columns: 26px 1fr 42px;
       }
+      .step-stage {
+        grid-template-columns: 1fr;
+      }
+      .visual-card {
+        min-height: 190px;
+      }
+      .step-header {
+        align-items: flex-start;
+      }
       .stats {
         grid-template-columns: 1fr;
       }
@@ -1098,10 +1309,19 @@
       <section class="lesson-player" id="lessonPlayer" hidden aria-live="polite">
         <div class="step-header">
           <h3 id="stepTitle">Stap 1</h3>
-          <span class="step-count" id="stepCount">1 van 4</span>
+          <div class="step-tools">
+            <button class="btn" type="button" id="speakStep">Lees voor</button>
+            <span class="step-count" id="stepCount">1 van 4</span>
+          </div>
         </div>
-        <p class="step-text" id="stepText"></p>
-        <div class="coach-note" id="stepCoach"></div>
+        <div class="step-stage">
+          <div class="visual-card" id="stepVisual"></div>
+          <div class="text-stack">
+            <p class="step-text" id="stepText"></p>
+            <p class="step-detail" id="stepDetail"></p>
+            <div class="coach-note" id="stepCoach"></div>
+          </div>
+        </div>
         <div class="step-list" id="stepList" aria-label="Stappen in deze les"></div>
         <div class="actions">
           <button class="btn" type="button" id="prevStep">Vorige stap</button>
@@ -1258,9 +1478,12 @@
       const lessonPlayer = app.querySelector("#lessonPlayer");
       const stepTitle = app.querySelector("#stepTitle");
       const stepCount = app.querySelector("#stepCount");
+      const stepVisual = app.querySelector("#stepVisual");
       const stepText = app.querySelector("#stepText");
+      const stepDetail = app.querySelector("#stepDetail");
       const stepCoach = app.querySelector("#stepCoach");
       const stepList = app.querySelector("#stepList");
+      const speakStep = app.querySelector("#speakStep");
       const prevStep = app.querySelector("#prevStep");
       const nextStep = app.querySelector("#nextStep");
       const finishLesson = app.querySelector("#finishLesson");
@@ -1410,6 +1633,63 @@
         }
       ];
 
+      const stepGuidance = [
+        [
+          { visual: "posture", caption: "Gitaar tegen je buik, voeten stevig, schouders laag.", detail: "Ga zitten alsof je rustig een boek gaat lezen. Zet de ronding van de gitaar op je rechterbeen als je rechtshandig speelt. Hou de hals iets omhoog, zodat je linkerhand niet hoeft te trekken. Je arm houdt de gitaar zacht op zijn plek, niet je knijphand." },
+          { visual: "strum", caption: "Je aanslaghand zweeft boven het klankgat.", detail: "Laat je pols los. Denk aan een zachte veeg door water: je duim of vingers bewegen door de snaar heen en stoppen niet op de snaar. Je hand mag klein bewegen. Een mooi zacht geluid is beter dan hard." },
+          { visual: "string", caption: "De dikste snaar zit het dichtst bij je gezicht.", detail: "Kijk naar de snaren alsof het zes lijntjes zijn van dik naar dun. Pak alleen de bovenste dikke snaar. Speel hem en laat je hand daarna stil worden, zodat je kunt horen hoe lang de toon blijft hangen." },
+          { visual: "strum", caption: "Drie rustige tonen, met pauze ertussen.", detail: "Speel niet drie keer snel achter elkaar. Speel een toon, wacht, adem, speel opnieuw. Zo leert je hand dat gitaarspelen niet duwen is, maar luisteren en ontspannen bewegen." }
+        ],
+        [
+          { visual: "string", caption: "Begin bovenaan: lage E.", detail: "De lage E is de dikste snaar. Zeg hardop 'E' voordat je hem speelt. Door te zeggen en te spelen tegelijk, koppel je de naam aan het gevoel onder je vingers." },
+          { visual: "string", caption: "E, A, D, G loopt van dik naar dun.", detail: "Schuif telkens een snaar naar beneden. Raak eerst aan, zeg de naam, speel daarna pas. Als je per ongeluk twee snaren raakt, is dat niet erg: zet je hand terug en doe alleen die ene snaar opnieuw." },
+          { visual: "string", caption: "B en hoge e zijn de dunste snaren.", detail: "De dunne snaren reageren sneller. Speel ze extra zacht. Noem de laatste snaar 'hoge e', omdat er ook al een lage E bovenaan zit." },
+          { visual: "string", caption: "E A D G B e, als een route over de gitaar.", detail: "Speel de hele rij langzaam. Kijk eerst, zeg de naam, speel dan. Als je blijft hangen bij één snaar, begin je gewoon opnieuw bij E." }
+        ],
+        [
+          { visual: "strum", caption: "Eén toon spelen en laten zweven.", detail: "Na het aanslaan haal je je hand weg van de snaar. Raak de snaar niet meteen opnieuw aan. Je oefent hier niet snelheid, maar controle: één beweging, één helder geluid." },
+          { visual: "string", caption: "A, D en G liggen in het midden.", detail: "Middensnaren zijn makkelijk per ongeluk samen te raken. Maak je aanslag kleiner. Je hoeft maar een paar millimeter door de snaar heen te bewegen." },
+          { visual: "strum", caption: "Dunne snaren speel je lichter.", detail: "Als B of hoge e scherp klinkt, speel je waarschijnlijk te hard. Ontspan je vingers en laat alleen het topje van je duim of nagel langs de snaar gaan." },
+          { visual: "listen", caption: "Kies dezelfde snaar in de Luistercoach.", detail: "Leg je telefoon dicht bij de gitaar, kies bijvoorbeeld E, en speel alleen die snaar. Wacht tot de meter reageert. De coach helpt vooral met losse snaren, niet met alle snaren tegelijk." }
+        ],
+        [
+          { visual: "fret-em", caption: "Em gebruikt twee vingers in het tweede vakje.", detail: "Kijk naar de akkoordkaart alsof het een plattegrond is. De verticale lijnen zijn snaren, de horizontale lijnen zijn frets. Bij Em staan twee vingers naast elkaar op de A- en D-snaar." },
+          { visual: "fret-hand", caption: "Duim achter de hals, vingers rond.", detail: "Zet je duim achter de hals, ongeveer tegenover je middelvinger. Knijp niet met je hele hand. Maak je vingers rond, alsof je een klein balletje vasthoudt, en druk met je vingertoppen." },
+          { visual: "fret-em", caption: "Speel elke snaar apart om te controleren.", detail: "Speel van dik naar dun. Hoor je een doffe snaar? Dan raakt een vinger waarschijnlijk een buur-snaar. Maak je vinger ronder en zet hem dichter achter het fretje." },
+          { visual: "fret-hand", caption: "Loslaten en opnieuw plaatsen is de oefening.", detail: "Je vingers leren door opnieuw te landen. Haal ze los, schud je hand klein uit, zet Em opnieuw neer. Drie rustige herhalingen zijn genoeg." }
+        ],
+        [
+          { visual: "fret-am", caption: "Am gebruikt drie vingers en start vanaf A.", detail: "Bij Am sla je de dikste snaar over. Kijk naar de x op de akkoordkaart. Je begint met spelen vanaf de A-snaar, de tweede snaar van boven." },
+          { visual: "fret-hand", caption: "Bouw het akkoord vinger voor vinger.", detail: "Zet niet alle vingers tegelijk neer als dat rommelig voelt. Eerst wijsvinger, dan middelvinger, dan ringvinger. Controleer tussendoor of je pols ontspannen blijft." },
+          { visual: "strum", caption: "Je aanslag begint op de A-snaar.", detail: "Richt je aanslag iets lager dan bij Em. Je hoeft de dikke E niet te dempen met kracht; je kunt hem gewoon overslaan door kleiner te bewegen." },
+          { visual: "chord-compare", caption: "Em klinkt open, Am klinkt iets donkerder.", detail: "Speel Em en luister. Speel daarna Am en luister opnieuw. Probeer niet meteen te beoordelen of het perfect is. Vraag alleen: hoor ik verschil?" }
+        ],
+        [
+          { visual: "fret-em", caption: "Begin met een rustige Em.", detail: "Zet Em neer en speel langzaam. Voordat je wisselt, kijk je alvast waar Am ligt. Je hoofd mag de route eerder weten dan je vingers." },
+          { visual: "switch", caption: "Til vingers net genoeg op.", detail: "Til je vingers niet ver van de snaren. Hoe kleiner de beweging, hoe makkelijker de wissel. Laat je hand boven de hals zweven alsof hij bijna landt." },
+          { visual: "fret-am", caption: "Land op Am en speel vanaf A.", detail: "Zet Am neer zonder boos te worden als het even duurt. Speel pas als je vingers staan. Een langzame goede wissel is waardevoller dan een snelle rommelige." },
+          { visual: "switch", caption: "Vijf rondes is een echte oefening.", detail: "Tel elke ronde: Em naar Am is één. Na vijf rondes stop je even. Je hoeft niet door tot je moe wordt; je wil eindigen terwijl je hand nog ontspannen voelt." }
+        ],
+        [
+          { visual: "rhythm", caption: "Tel hardop: 1, 2, 3, 4.", detail: "Zeg de tellen met een rustige stem. Als je voet mee tikt, laat die voet precies op de cijfers landen. Je hand hoeft nog niets moeilijks te doen." },
+          { visual: "rhythm", caption: "Omlaag op elke tel.", detail: "Beweeg je hand naar beneden op 1, 2, 3 en 4. Tussen de tellen komt je hand terug omhoog zonder de snaren hard te raken. Dat terugkomen hoort bij de beweging." },
+          { visual: "rhythm", caption: "Speel met het ritmerooster mee.", detail: "Start de ritmeknop en kijk naar de donkere vakjes. Speel alleen wanneer het vakje aanvoelt als de tel. Als je achterloopt, stop je en begin je rustiger opnieuw." },
+          { visual: "strum", caption: "Losse arm, kleine beweging.", detail: "Ritme komt niet uit je vingers alleen. Laat je onderarm zacht meebewegen. Als je schouder omhoog gaat, pauzeer je even en begin je opnieuw." }
+        ],
+        [
+          { visual: "song", caption: "Em op tel 1 en 2.", detail: "Zet Em klaar voordat je begint met tellen. Speel rustig op 1 en 2. Laat het akkoord gewoon klinken; je hoeft niets extra's te versieren." },
+          { visual: "song", caption: "Am op tel 3 en 4.", detail: "Wissel naar Am. Als de wissel langer duurt, tel je langzamer. Muziek mag langzaam zijn zolang de beweging rustig blijft." },
+          { visual: "song", caption: "Em, Em, Am, Am is je ronde.", detail: "Speel de ronde drie keer achter elkaar. Als je fout speelt, stop niet boos; glimlach, zet je vingers terug en begin bij het begin van de ronde." },
+          { visual: "song", caption: "Speel je eerste liedje helemaal uit.", detail: "Kies iemand of speel voor jezelf. Begin, speel de ronde, en eindig bewust. Niet perfect, wel echt gespeeld. Dat is de bedoeling." }
+        ]
+      ];
+
+      lessons.forEach((lesson, lessonIndex) => {
+        lesson.steps.forEach((step, stepIndex) => {
+          Object.assign(step, stepGuidance[lessonIndex][stepIndex]);
+        });
+      });
+
       function renderCourse() {
         courseMap.innerHTML = "";
         lessonProgress.innerHTML = "";
@@ -1472,7 +1752,10 @@
         const step = lesson.steps[currentStep];
         stepTitle.textContent = step.title;
         stepText.textContent = step.text;
+        stepDetail.textContent = step.detail || "";
         stepCoach.textContent = step.coach;
+        stepVisual.innerHTML = renderStepVisual(step.visual, step.caption);
+        speakStep.textContent = "Lees voor";
         stepCount.textContent = `${currentStep + 1} van ${lesson.steps.length}`;
         prevStep.disabled = currentStep === 0;
         nextStep.disabled = currentStep === lesson.steps.length - 1;
@@ -1488,6 +1771,59 @@
           row.innerHTML = `<span>${index < currentStep ? "✓" : index === currentStep ? "•" : index + 1}</span><span>${item.title}</span>`;
           stepList.appendChild(row);
         });
+      }
+
+      function renderMiniGuitar(extra = "") {
+        return `<div class="mini-guitar">
+          <div class="mini-body"></div>
+          <div class="mini-neck"><span class="mini-string"></span><span class="mini-string"></span><span class="mini-string"></span><span class="mini-string"></span><span class="mini-string"></span><span class="mini-string"></span></div>
+          ${extra}
+        </div>`;
+      }
+
+      function renderStepVisual(type, caption = "") {
+        let art = "";
+        if (type === "posture") {
+          art = renderMiniGuitar('<div class="hand strum" style="left:34px;top:78px;transform:rotate(-8deg) scale(0.9);"></div>');
+        } else if (type === "strum") {
+          art = renderMiniGuitar('<div class="hand strum"></div><div class="arrow-line down"></div>');
+        } else if (type === "string" || type === "listen") {
+          art = renderMiniGuitar('<div class="arrow-line down" style="left:82px;top:36px;"></div>');
+        } else if (type === "fret-em") {
+          art = '<div class="visual-neck"><span class="finger-dot">2</span><span class="finger-dot">3</span></div>';
+        } else if (type === "fret-am") {
+          art = '<div class="visual-neck"><span class="finger-dot" style="left:78px;top:63px;">2</span><span class="finger-dot" style="left:79px;top:84px;">3</span><span class="finger-dot" style="left:126px;top:42px;">1</span></div>';
+        } else if (type === "fret-hand") {
+          art = '<div class="visual-neck"><div class="hand fret"></div><span class="finger-dot">2</span><span class="finger-dot">3</span></div>';
+        } else if (type === "switch") {
+          art = '<div class="visual-neck"><span class="finger-dot" style="left:64px;top:42px;">Em</span><span class="finger-dot" style="left:142px;top:74px;background:var(--teal);">Am</span><div class="arrow-line" style="left:83px;top:42px;"></div></div>';
+        } else if (type === "rhythm") {
+          art = '<div class="beat-grid" style="width:220px;"><span class="beat on">1</span><span class="beat">2</span><span class="beat on">3</span><span class="beat">4</span></div>';
+        } else if (type === "song") {
+          art = '<div class="beat-grid" style="width:220px;"><span class="beat on">Em</span><span class="beat on">Em</span><span class="beat" style="background:rgba(35,143,135,0.22);color:var(--ink);">Am</span><span class="beat" style="background:rgba(35,143,135,0.22);color:var(--ink);">Am</span></div>';
+        } else {
+          art = renderMiniGuitar();
+        }
+        return `${art}<div class="visual-caption">${caption}</div>`;
+      }
+
+      function speakCurrentStep() {
+        if (!("speechSynthesis" in window)) {
+          stepCoach.textContent = "Voorlezen wordt door deze browser niet ondersteund.";
+          return;
+        }
+        const lesson = lessons[currentLesson];
+        const step = lesson.steps[currentStep];
+        const text = `${lesson.label}. ${step.title}. ${step.text} ${step.detail || ""} Tip: ${step.coach}`;
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "nl-NL";
+        utterance.rate = 0.92;
+        utterance.pitch = 1.02;
+        speakStep.textContent = "Voorlezen...";
+        utterance.onend = () => { speakStep.textContent = "Lees voor"; };
+        utterance.onerror = () => { speakStep.textContent = "Lees voor"; };
+        window.speechSynthesis.speak(utterance);
       }
 
       function tone(freq, duration = 0.18) {
@@ -1714,6 +2050,7 @@
       });
 
       startLesson.addEventListener("click", () => {
+        if ("speechSynthesis" in window) window.speechSynthesis.cancel();
         startedLesson = currentLesson;
         currentStep = 0;
         renderLesson();
@@ -1722,6 +2059,7 @@
 
       prevStep.addEventListener("click", () => {
         if (currentStep > 0) {
+          if ("speechSynthesis" in window) window.speechSynthesis.cancel();
           currentStep -= 1;
           renderLessonPlayer();
         }
@@ -1730,12 +2068,14 @@
       nextStep.addEventListener("click", () => {
         const steps = lessons[currentLesson].steps;
         if (currentStep < steps.length - 1) {
+          if ("speechSynthesis" in window) window.speechSynthesis.cancel();
           currentStep += 1;
           renderLessonPlayer();
         }
       });
 
       finishLesson.addEventListener("click", () => {
+        if ("speechSynthesis" in window) window.speechSynthesis.cancel();
         completedLessons.add(currentLesson);
         minutes.textContent = String(Number(minutes.textContent) + parseInt(lessons[currentLesson].time, 10));
         badges.textContent = String(completedLessons.size);
@@ -1751,6 +2091,7 @@
 
       prevLesson.addEventListener("click", () => {
         if (currentLesson > 0) {
+          if ("speechSynthesis" in window) window.speechSynthesis.cancel();
           currentLesson -= 1;
           currentStep = 0;
           startedLesson = null;
@@ -1760,12 +2101,15 @@
 
       nextLesson.addEventListener("click", () => {
         if (currentLesson < lessons.length - 1) {
+          if ("speechSynthesis" in window) window.speechSynthesis.cancel();
           currentLesson += 1;
           currentStep = 0;
           startedLesson = null;
           renderLesson();
         }
       });
+
+      speakStep.addEventListener("click", speakCurrentStep);
 
       renderCourse();
       renderLesson();
